@@ -14,39 +14,19 @@
 
 	<link rel="canonical" href="pages-sign-in-2.html" />
 
-	<title>Sign In | AdminKit Demo</title>
+	<title>Login - {{ env('APP_NAME') }}</title>
 
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
 
-	<!-- Choose your prefered color scheme -->
-	<!-- <link href="css/light.css" rel="stylesheet"> -->
-	<!-- <link href="css/dark.css" rel="stylesheet"> -->
-
-	<!-- BEGIN SETTINGS -->
-	<!-- Remove this after purchasing -->
-	<link class="js-stylesheet" href="css/light.css" rel="stylesheet">
-	<script src="js/settings.js"></script>
+	<link class="js-stylesheet" href="{{ asset('css/light.css') }}" rel="stylesheet">
+	<script src="{{ asset('js/settings.js') }}"></script>
 	<style>
 		body {
 			opacity: 0;
 		}
 	</style>
 	<!-- END SETTINGS -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120946860-10"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-120946860-10', { 'anonymize_ip': true });
-</script></head>
-<!--
-  HOW TO USE: 
-  data-theme: default (default), dark, light, colored
-  data-layout: fluid (default), boxed
-  data-sidebar-position: left (default), right
-  data-sidebar-layout: default (default), compact
--->
+</head>
 
 <body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-layout="default">
 	<main class="d-flex w-100 h-100">
@@ -85,7 +65,7 @@
 											</div>
 										</div>
 										<div class="d-grid gap-2 mt-3">
-											<a class='btn btn-lg btn-primary' href='index.html'>Sign in</a>
+											<a class='btn btn-lg btn-primary' href='{{ route('index') }}'>Sign in</a>
 										</div>
 									</form>
 								</div>
@@ -100,25 +80,8 @@
 	<script src="js/app.js"></script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function(event) { 
-    setTimeout(function(){
-      if(localStorage.getItem('popState') !== 'shown'){
-        window.notyf.open({
-          type: "success",
-          message: "Get access to all 500+ components and 45+ pages with AdminKit PRO. <u><a class=\"text-white\" href=\"https://adminkit.io/pricing\" target=\"_blank\">More info</a></u> 🚀",
-          duration: 10000,
-          ripple: true,
-          dismissible: false,
-          position: {
-            x: "left",
-            y: "bottom"
-          }
-        });
-
-        localStorage.setItem('popState','shown');
-      }
-    }, 15000);
-  });
-</script></body>
+  
+</script>
+</body>
 
 </html>
