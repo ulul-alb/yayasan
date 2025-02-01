@@ -17,3 +17,6 @@ use App\Http\Controllers;
 Route::get('/', [Controllers\LoginController::class, 'showLoginForm'])->name('login');
 Route::get('/dashboard', [Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/profile', [Controllers\HomeController::class, 'profile'])->name('profile');
+
+// Program
+Route::get('/program/index', [Controllers\ProgramController::class, 'index'])->name('program.index');

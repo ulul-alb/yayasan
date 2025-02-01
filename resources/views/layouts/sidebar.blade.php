@@ -15,11 +15,11 @@
         <div class="sidebar-user">
             <div class="d-flex justify-content-center">
                 <div class="flex-shrink-0">
-                    <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" />
+                    <img src="{{ asset('/img/avatars/avatar.jpg') }}" class="avatar img-fluid rounded me-1" alt="Charles Hall" />
                 </div>
                 <div class="flex-grow-1 ps-2">
                     <a class="sidebar-user-title" href="#">
-                        Charles Hall
+                        Kiki Mutkinati
                     </a>
                     <div class="sidebar-user-subtitle">Admin</div>
                 </div>
@@ -38,7 +38,7 @@
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Program</span>
                 </a>
                 <ul id="program" class="sidebar-dropdown list-unstyled collapse show" data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>List</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('program.index') }}'>List</a></li>
                     <li class="sidebar-item"><a class='sidebar-link' href='#'>Penyaluran</a></li>
                     <li class="sidebar-item"><a class='sidebar-link' href='#'>Kabar Terbaru</a></li>
                 </ul>
@@ -117,12 +117,12 @@
             </li>
             <li class="sidebar-item">
                 <a class='sidebar-link' href='tables-bootstrap.html'>
-                    <i class="align-middle" data-feather="list"></i> <span class="align-middle">Pengaturan</span>
+                    <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Pengaturan</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a class='sidebar-link' href='tables-bootstrap.html'>
-                    <i class="align-middle" data-feather="list"></i> <span class="align-middle">Kebijakan Privasi</span>
+                    <i class="align-middle" data-feather="anchor"></i> <span class="align-middle">Kebijakan Privasi</span>
                 </a>
             </li>
             <li class="sidebar-item">
@@ -132,12 +132,12 @@
             </li>
             <li class="sidebar-item">
                 <a class='sidebar-link' href='tables-bootstrap.html'>
-                    <i class="align-middle" data-feather="list"></i> <span class="align-middle">FAQ</span>
+                    <i class="align-middle" data-feather="help-circle"></i> <span class="align-middle">FAQ</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a class='sidebar-link' href='tables-bootstrap.html'>
-                    <i class="align-middle" data-feather="list"></i> <span class="align-middle">Bantuan</span>
+                    <i class="align-middle" data-feather="info"></i> <span class="align-middle">Bantuan</span>
                 </a>
             </li>
         </ul>
