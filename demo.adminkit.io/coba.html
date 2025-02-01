@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,69 +9,131 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1>Profil Karyawan</h1>
-        <p>Nama: John Doe</p>
-        <p>Jabatan: Staf Administrasi</p>
-        <p>Departemen: Keuangan</p>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editDataModal">
-            Ubah Data
-        </button>
+        <div class="row">
+            <!-- Kolom Kiri: Foto Profil -->
+            <div class="col-md-4 text-center">
+                <img src="https://via.placeholder.com/200" class="rounded-circle img-fluid mb-3" alt="Foto Karyawan">
+                <h3>John Doe</h3>
+                <p class="text-muted">Staf Administrasi</p>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editDataModal">
+                    Ubah Data
+                </button>
+            </div>
 
-        <!-- Modal Form Ubah Data -->
-        <div class="modal fade" id="editDataModal" tabindex="-1" aria-labelledby="editDataModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editDataModalLabel">Ubah Data Karyawan</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form action="update_karyawan.php" method="POST">
-                        <div class="modal-body">
-                            <!-- Nama -->
-                            <div class="mb-3">
-                                <label for="nama" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
-                            </div>
-                            <!-- Alamat -->
-                            <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan alamat lengkap"></textarea>
-                            </div>
-                            <!-- Nomor Telepon -->
-                            <div class="mb-3">
-                                <label for="telepon" class="form-label">Nomor Telepon</label>
-                                <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Masukkan nomor telepon">
-                            </div>
-                            <!-- Email -->
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email">
-                            </div>
-                            <!-- Jabatan -->
-                            <div class="mb-3">
-                                <label for="jabatan" class="form-label">Jabatan</label>
-                                <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Masukkan jabatan">
-                            </div>
-                            <!-- Departemen -->
-                            <div class="mb-3">
-                                <label for="departemen" class="form-label">Departemen</label>
-                                <input type="text" class="form-control" id="departemen" name="departemen" placeholder="Masukkan departemen">
-                            </div>
-                            <!-- Status -->
-                            <div class="mb-3">
-                                <label for="status" class="form-label">Status Karyawan</label>
-                                <select class="form-select" id="status" name="status">
-                                    <option value="Tetap">Tetap</option>
-                                    <option value="Kontrak">Kontrak</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-success">Simpan Perubahan</button>
-                        </div>
-                    </form>
+            <!-- Kolom Kanan: Informasi Profil -->
+            <div class="col-md-8">
+                <h4>Informasi Pribadi</h4>
+                <table class="table">
+                    <tr>
+                        <th>Nama Lengkap</th>
+                        <td>John Doe</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>johndoe@email.com</td>
+                    </tr>
+                    <tr>
+                        <th>Nomor Telepon</th>
+                        <td>+62 812 3456 7890</td>
+                    </tr>
+                    <tr>
+                        <th>Alamat</th>
+                        <td>Jl. Merdeka No. 10, Jakarta</td>
+                    </tr>
+                    <tr>
+                        <th>Tanggal Lahir</th>
+                        <td>10 Januari 1990</td>
+                    </tr>
+                    <tr>
+                        <th>Status Karyawan</th>
+                        <td>Tetap</td>
+                    </tr>
+                </table>
+
+                <h4>Riwayat Pekerjaan</h4>
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Tahun</th>
+                            <th>Jabatan</th>
+                            <th>Departemen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2022 - Sekarang</td>
+                            <td>Staf Administrasi</td>
+                            <td>Keuangan</td>
+                        </tr>
+                        <tr>
+                            <td>2020 - 2022</td>
+                            <td>Asisten Administrasi</td>
+                            <td>Keuangan</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Informasi Tambahan</h4>
+                <ul>
+                    <li><strong>Keahlian:</strong> Microsoft Office, Manajemen Keuangan, Komunikasi</li>
+                    <li><strong>Pendidikan:</strong> S1 Akuntansi, Universitas Indonesia</li>
+                    <li><strong>LinkedIn:</strong> <a href="#">linkedin.com/johndoe</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Form Ubah Data -->
+    <div class="modal fade" id="editDataModal" tabindex="-1" aria-labelledby="editDataModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ubah Data Karyawan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <form action="update_karyawan.php" method="POST">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" name="nama" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Alamat</label>
+                            <textarea class="form-control" name="alamat" rows="2"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tanggal Lahir</label>
+                            <input type="date" class="form-control" name="tanggal_lahir">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nomor Telepon</label>
+                            <input type="text" class="form-control" name="telepon">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Jabatan</label>
+                            <input type="text" class="form-control" name="jabatan">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Departemen</label>
+                            <input type="text" class="form-control" name="departemen">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Status Karyawan</label>
+                            <select class="form-select" name="status">
+                                <option value="Tetap">Tetap</option>
+                                <option value="Kontrak">Kontrak</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
