@@ -20,3 +20,9 @@ Route::get('/profile', [Controllers\HomeController::class, 'profile'])->name('pr
 
 // Program
 Route::get('/program/index', [Controllers\ProgramController::class, 'index'])->name('program.index');
+Route::get('/program/penyaluran', [Controllers\ProgramController::class, 'penyaluran'])->name('program.penyaluran');
+Route::get('/program/info', [Controllers\ProgramController::class, 'info'])->name('program.info');
+
+//Keuangan
+Route::get('/keuangan/transaksi', [Controllers\KeuanganController::class, 'transaksi'])->name('keuangan.transaksi');
+

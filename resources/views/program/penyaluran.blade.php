@@ -35,10 +35,10 @@
                     <table id="datatables-reponsive" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
+                                <th>Nama program</th>
+                                <th>Penerima</th>
+                                <th>Jumlah dana</th>
+                                <th>Tanggal Penyaluran</th>
                                 <th>Start date</th>
                                 <th>Aksi</th>
                             </tr>

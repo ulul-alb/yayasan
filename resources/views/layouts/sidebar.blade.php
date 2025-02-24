@@ -39,8 +39,8 @@
                 </a>
                 <ul id="program" class="sidebar-dropdown list-unstyled collapse show" data-bs-parent="#sidebar">
                     <li class="sidebar-item"><a class='sidebar-link' href='{{ route('program.index') }}'>List</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Penyaluran</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Kabar Terbaru</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('program.penyaluran') }}'>Penyaluran</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('program.info') }}'>Kabar Terbaru</a></li>
                 </ul>
             </li>
 
@@ -59,7 +59,7 @@
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">Keuangan</span>
                 </a>
                 <ul id="keuangan" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Transaksi</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('keuangan.transaksi') }}'>Transaksi</a></li>
                     <li class="sidebar-item"><a class='sidebar-link' href='#'>Laporan</a></li>
                     <li class="sidebar-item"><a class='sidebar-link' href='#'>Kategori</a></li>
                     <li class="sidebar-item"><a class='sidebar-link' href='#'>Sub Kategori</a></li>

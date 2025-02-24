@@ -16,6 +16,16 @@ class ProgramController extends Controller
         return view('program.index');
     }
 
+    public function penyaluran()
+    {
+        return view('program.penyaluran');
+    }
+
+    public function info()
+    {
+        return view('program.info');
+    }
+
     /**
      * Profile
      *
