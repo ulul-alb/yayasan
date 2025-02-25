@@ -16,7 +16,7 @@
 @section('content')
     <div class="row mb-2 mb-xl-3">
         <div class="col-auto d-none d-sm-block">
-            <h3>List Program</h3>
+            <h3>List Donatur</h3>
         </div>
 
         <div class="col-auto ms-auto text-end mt-n1">
@@ -35,10 +35,10 @@
                     <table id="datatables-reponsive" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
+                                <th>Nama program</th>
+                                <th>Penerima</th>
+                                <th>Jumlah dana</th>
+                                <th>Tanggal Penyaluran</th>
                                 <th>Start date</th>
                                 <th>Aksi</th>
                             </tr>

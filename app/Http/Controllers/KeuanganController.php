@@ -10,4 +10,15 @@ class KeuanganController extends Controller
     {
         return view('keuangan.transaksi');
     }
+
+    public function kategori()
+    {
+        return view('keuangan.kategori');
+    }
+
+    public function skategori()
+    {
+        return view('keuangan.skategori');
+    }
+
 }

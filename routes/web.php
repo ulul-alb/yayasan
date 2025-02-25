@@ -25,4 +25,15 @@ Route::get('/program/info', [Controllers\ProgramController::class, 'info'])->nam
 
 //Keuangan
 Route::get('/keuangan/transaksi', [Controllers\KeuanganController::class, 'transaksi'])->name('keuangan.transaksi');
+Route::get('/keuangan/kategori', [Controllers\KeuanganController::class, 'kategori'])->name('keuangan.kategori');
+Route::get('/keuangan/skategori', [Controllers\KeuanganController::class, 'skategori'])->name('keuangan.skategori');
 
+//Master Data
+Route::get('/mdata/staff', [Controllers\MdataController::class, 'staff'])->name('mdata.staff');
+Route::get('/mdata/donatur', [Controllers\MdataController::class, 'donatur'])->name('mdata.donatur');
+Route::get('/mdata/mitra', [Controllers\MdataController::class, 'mitra'])->name('mdata.mitra');
+Route::get('/mdata/relawan', [Controllers\MdataController::class, 'relawan'])->name('mdata.relawan');
+
+//Aset Manajemen
+Route::get('/Aset/inventaris', [Controllers\AsetController::class, 'inventaris'])->name('aset.inventaris');
+Route::get('/Aset/Kategori', [Controllers\AsetController::class, 'Kategori'])->name('aset.Kategori');

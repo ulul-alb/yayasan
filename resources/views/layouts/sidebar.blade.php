@@ -61,8 +61,8 @@
                 <ul id="keuangan" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item"><a class='sidebar-link' href='{{ route('keuangan.transaksi') }}'>Transaksi</a></li>
                     <li class="sidebar-item"><a class='sidebar-link' href='#'>Laporan</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Kategori</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Sub Kategori</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('keuangan.kategori') }}'>Kategori</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('keuangan.skategori') }}'>Sub Kategori</a></li>
                 </ul>
             </li>
 
@@ -95,8 +95,8 @@
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">Aset Manajemen</span>
                 </a>
                 <ul id="inventaris" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Inventaris</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Kategori</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('aset.inventaris') }}'>Inventaris</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('aset.Kategori') }}'>Kategori</a></li>
                 </ul>
             </li>
 
@@ -105,10 +105,10 @@
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">Master Data</span>
                 </a>
                 <ul id="masterdata" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Akun / Staff</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Donatur</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Mitra</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Relawan</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('mdata.staff') }}'>Akun / Staff</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('mdata.donatur') }}'>Donatur</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('mdata.mitra') }}'>Mitra</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('mdata.relawan') }}'>Relawan</a></li>
                 </ul>
             </li>
 
