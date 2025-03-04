@@ -35,5 +35,13 @@ Route::get('/mdata/mitra', [Controllers\MdataController::class, 'mitra'])->name(
 Route::get('/mdata/relawan', [Controllers\MdataController::class, 'relawan'])->name('mdata.relawan');
 
 //Aset Manajemen
-Route::get('/Aset/inventaris', [Controllers\AsetController::class, 'inventaris'])->name('aset.inventaris');
-Route::get('/Aset/Kategori', [Controllers\AsetController::class, 'Kategori'])->name('aset.Kategori');
+Route::get('/aset/inventaris', [Controllers\AsetController::class, 'inventaris'])->name('aset.inventaris');
+Route::get('/aset/Kategori', [Controllers\AsetController::class, 'Kategori'])->name('aset.Kategori');
+
+//HRD
+Route::get('/hrd/penggajian', [Controllers\HrdController::class, 'penggajian'])->name('hrd.penggajian');
+
+
+Route::get('/program/{id}', [ProgramController::class, 'show'])->name('program.show');
+Route::get('/program/{id}/edit', [ProgramController::class, 'edit'])->name('program.edit');
+Route::resource('program', App\Http\Controllers\ProgramController::class);

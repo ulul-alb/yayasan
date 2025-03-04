@@ -71,7 +71,7 @@
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">HRD</span>
                 </a>
                 <ul id="hrd" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Penggajian</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('hrd.penggajian') }}'>Penggajian</a></li>
                     <li class="sidebar-item"><a class='sidebar-link' href='#'>Presensi</a></li>
                     <li class="sidebar-item"><a class='sidebar-link' href='#'>Hari Libur</a></li>
                     <li class="sidebar-item"><a class='sidebar-link' href='#'>Perizinan</a></li>
