@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use App\Http\Controllers\ProgramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +42,11 @@ Route::get('/aset/Kategori', [Controllers\AsetController::class, 'Kategori'])->n
 //HRD
 Route::get('/hrd/penggajian', [Controllers\HrdController::class, 'penggajian'])->name('hrd.penggajian');
 
-
+//Database program
 Route::get('/program/{id}', [ProgramController::class, 'show'])->name('program.show');
 Route::get('/program/{id}/edit', [ProgramController::class, 'edit'])->name('program.edit');
 Route::resource('program', App\Http\Controllers\ProgramController::class);
+Route::post('/program/store', [ProgramController::class, 'store'])->name('program.store');
+
+
+

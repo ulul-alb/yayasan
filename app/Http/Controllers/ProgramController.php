@@ -57,6 +57,29 @@ class ProgramController extends Controller
         return redirect()->route('program.index')->with('success', 'Program berhasil dihapus.');
     }
 
+    public function store(Request $request)
+{  
+    // Log data request untuk debugging
+    \Log::info($request->all());
+
+    // Validasi input terlebih dahulu
+    $validatedData = $request->validate([
+        'nama' => 'required|string|max:255',
+        'position' => 'required|string|max:255',
+        'office' => 'required|string|max:255',
+        'age' => 'required|integer',
+        'start_date' => 'required|date',
+    ]);
+
+    // Simpan data ke database
+    Program::create($validatedData);
+
+    return redirect()->route('program.index')->with('success', 'Data berhasil ditambahkan!');
+}
+
+
+
+
 
 
 }

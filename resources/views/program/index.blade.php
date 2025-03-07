@@ -21,7 +21,7 @@
 
         <div class="col-auto ms-auto text-end mt-n1">
             <a href="#" class="btn btn-light bg-white me-2">Export</a>
-            <a href="#" class="btn btn-primary">Tambah</a>
+            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah</a>
         </div>
     </div>
     <div class="row">
@@ -46,7 +46,7 @@
                         <tbody>
                             @foreach ($programs as $program)
                                 <tr>
-                                    <td>{{ $program->name }}</td>
+                                    <td>{{ $program->nama }}</td>
                                     <td>{{ $program->position }}</td>
                                     <td>{{ $program->office }}</td>
                                     <td>{{ $program->age }}</td>
@@ -74,11 +74,49 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Tambah Data -->
+<div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTambahLabel">Tambah Program</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formTambah" action="{{ route('program.store') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Nama Program</label>
+                        <input type="text" class="form-control" id="nama" name="nama" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="position" class="form-label">Position</label>
+                        <input type="text" class="form-control" id="position" name="position" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="office" class="form-label">Office</label>
+                        <input type="text" class="form-control" id="office" name="office" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="number" class="form-control" id="age" name="age" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="start_date" class="form-label">Start Date</label>
+                        <input type="date" class="form-control" id="start_date" name="start_date" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        $("#datatables-reponsive").DataTable({
+        $("#datatables-responsive").DataTable({
             responsive: true
         });
     });
@@ -90,6 +128,9 @@
 
 
 @section('js_plugins')
+    <!-- Pastikan jQuery hanya dipanggil sekali -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('/js/datatables.js') }}"></script>
 @endsection
 
@@ -97,9 +138,17 @@
 @section('js_inline')
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        $("#datatables-reponsive").DataTable({
-            responsive: true
+        if ($.fn.DataTable.isDataTable("#datatables-responsive")) {
+            $("#datatables-responsive").DataTable().destroy(); // Hancurkan instance sebelumnya
+        }
+
+        $("#datatables-responsive").DataTable({
+            responsive: true,
+            autoWidth: false
         });
     });
 </script>
 @endsection
+
+
+
