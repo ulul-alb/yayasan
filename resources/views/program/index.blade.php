@@ -35,10 +35,10 @@
                     <table id="datatables-reponsive" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Name Program</th>
                                 <th>Position</th>
                                 <th>Office</th>
-                                <th>Age</th>
+                                <th>Status</th>
                                 <th>Start date</th>
                                 <th>Aksi</th>
                             </tr>
@@ -46,10 +46,10 @@
                         <tbody>
                             @foreach ($programs as $program)
                                 <tr>
-                                    <td>{{ $program->nama }}</td>
+                                    <td>{{ $program->name }}</td>
                                     <td>{{ $program->position }}</td>
                                     <td>{{ $program->office }}</td>
-                                    <td>{{ $program->age }}</td>
+                                    <td>{{ $program->status }}</td>
                                     <td>{{ $program->start_date }}</td>
                                     <td>
                                         <a href="{{ route('program.show', $program->id) }}" class="btn btn-sm btn-info">
@@ -99,8 +99,12 @@
                         <input type="text" class="form-control" id="office" name="office" required>
                     </div>
                     <div class="mb-3">
-                        <label for="age" class="form-label">Age</label>
-                        <input type="number" class="form-control" id="age" name="age" required>
+                    <label for="status">Status Program</label>
+                        <select name="status" id="status" class="form-control">
+                            <option value="aktif">Aktif</option>
+                            <option value="selesai">Selesai</option>
+                            <option value="ditunda">Ditunda</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="start_date" class="form-label">Start Date</label>

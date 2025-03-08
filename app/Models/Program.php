@@ -10,7 +10,8 @@ class Program extends Model {
 
     protected $table = 'programs';
 
-    protected $fillable = ['nama', 'position', 'office', 'age', 'start_date'];
+    protected $fillable = ['name', 'position', 'office', 'status', 'start_date'];
+
 
 }
 

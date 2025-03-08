@@ -47,6 +47,8 @@ Route::get('/program/{id}', [ProgramController::class, 'show'])->name('program.s
 Route::get('/program/{id}/edit', [ProgramController::class, 'edit'])->name('program.edit');
 Route::resource('program', App\Http\Controllers\ProgramController::class);
 Route::post('/program/store', [ProgramController::class, 'store'])->name('program.store');
+Route::put('/program/{id}', [ProgramController::class, 'update'])->name('program.update');
+
 
 
 

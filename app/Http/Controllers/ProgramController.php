@@ -45,9 +45,10 @@ class ProgramController extends Controller
 
     public function edit($id)
     {
-        $program = Program::findOrFail($id);
-        return view('program.edit', compact('program'));
+    $program = Program::findOrFail($id);
+    return view('program.edit', compact('program'));
     }
+
 
     public function destroy($id)
     {
@@ -58,27 +59,52 @@ class ProgramController extends Controller
     }
 
     public function store(Request $request)
-{  
-    // Log data request untuk debugging
-    \Log::info($request->all());
-
-    // Validasi input terlebih dahulu
-    $validatedData = $request->validate([
-        'nama' => 'required|string|max:255',
-        'position' => 'required|string|max:255',
-        'office' => 'required|string|max:255',
-        'age' => 'required|integer',
+    {
+    // Hapus dd() agar eksekusi tidak berhenti
+    $request->validate([
+        'nama'       => 'required|string|max:255',
+        'position'   => 'required|string|max:255',
+        'office'     => 'required|string|max:255',
+        'lokasi'     => 'required|string|max:255',
         'start_date' => 'required|date',
     ]);
 
-    // Simpan data ke database
-    Program::create($validatedData);
+    Program::create([
+        'name'       => $request->nama,
+        'position'   => $request->position,
+        'office'     => $request->office,
+        'lokasi'     => $request->lokasi,
+        'start_date' => $request->start_date,
+    ]);
 
-    return redirect()->route('program.index')->with('success', 'Data berhasil ditambahkan!');
-}
+    return redirect()->route('program.index')->with('success', 'Program berhasil ditambahkan!');
+    }
 
 
+    public function update(Request $request, $id)
+    {
+    $request->validate([
+        'nama'       => 'required|string|max:255',
+        'position'   => 'required|string|max:255',
+        'office'     => 'required|string|max:255',
+        'status'     => 'required|string|max:255',
+        'start_date' => 'required|date',
+    ]);
 
+    $program = Program::findOrFail($id);
+
+    $program->update([
+        'name'       => $request->nama,
+        'position'   => $request->position,
+        'office'     => $request->office,
+        'status' => $request->status,
+        'start_date' => $request->start_date,
+    ]);
+
+    return redirect()->route('program.index')->with('success', 'Program berhasil diperbarui!');
+    }
+
+    
 
 
 
