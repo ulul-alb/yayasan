@@ -88,7 +88,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama Program</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="mb-3">
                         <label for="position" class="form-label">Position</label>

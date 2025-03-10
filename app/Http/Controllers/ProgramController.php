@@ -60,25 +60,26 @@ class ProgramController extends Controller
 
     public function store(Request $request)
     {
-    // Hapus dd() agar eksekusi tidak berhenti
+
     $request->validate([
-        'nama'       => 'required|string|max:255',
+        'name'       => 'required|string|max:255',
         'position'   => 'required|string|max:255',
         'office'     => 'required|string|max:255',
-        'lokasi'     => 'required|string|max:255',
+        'status'     => 'required|string',
         'start_date' => 'required|date',
     ]);
 
-    Program::create([
-        'name'       => $request->nama,
-        'position'   => $request->position,
-        'office'     => $request->office,
-        'lokasi'     => $request->lokasi,
-        'start_date' => $request->start_date,
-    ]);
+    $program = new Program();
+    $program->name = $request->name;
+    $program->position = $request->position;
+    $program->office = $request->office;
+    $program->status = $request->status;
+    $program->start_date = $request->start_date;
+    $program->save();
 
     return redirect()->route('program.index')->with('success', 'Program berhasil ditambahkan!');
     }
+
 
 
     public function update(Request $request, $id)
@@ -97,7 +98,7 @@ class ProgramController extends Controller
         'name'       => $request->nama,
         'position'   => $request->position,
         'office'     => $request->office,
-        'status' => $request->status,
+        'status'     => $request->status,
         'start_date' => $request->start_date,
     ]);
 

@@ -24,7 +24,10 @@
 
             <div class="mb-3">
                 <label for="status">Status</label>
-                <input type="text" name="status" id="status" value="{{ old('status', $program->status) }}" required>
+                <select name="status" id="status" class="form-control">
+                    <option value="Aktif">Aktif</option>
+                    <option value="Nonaktif">Nonaktif</option>
+                </select>
             </div>
 
             <div class="mb-3">
