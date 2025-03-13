@@ -1,4 +1,4 @@
-@extends('layouts.app') {{-- Sesuaikan dengan layout yang kamu gunakan --}}
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -18,8 +18,8 @@
             <td>{{ $program->office }}</td>
         </tr>
         <tr>
-            <th>Usia</th>
-            <td>{{ $program->age }}</td>
+            <th>Status</th> {{-- Tambahkan Status --}}
+            <td>{{ $program->status }}</td>
         </tr>
         <tr>
             <th>Tanggal Mulai</th>

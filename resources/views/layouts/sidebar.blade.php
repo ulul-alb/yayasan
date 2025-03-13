@@ -39,7 +39,7 @@
                 </a>
                 <ul id="program" class="sidebar-dropdown list-unstyled collapse show" data-bs-parent="#sidebar">
                     <li class="sidebar-item"><a class='sidebar-link' href='{{ route('program.index') }}'>List</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('program.penyaluran') }}'>Penyaluran</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('penyaluran.index') }}'>Penyaluran</a></li>
                     <li class="sidebar-item"><a class='sidebar-link' href='{{ route('program.info') }}'>Kabar Terbaru</a></li>
                 </ul>
             </li>

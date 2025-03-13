@@ -2,7 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\ProgPenyaluranController;
+use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\MdataController;
+use App\Http\Controllers\AsetController;
+use App\Http\Controllers\HrdController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,17 +44,23 @@ Route::get('/mdata/relawan', [Controllers\MdataController::class, 'relawan'])->n
 
 //Aset Manajemen
 Route::get('/aset/inventaris', [Controllers\AsetController::class, 'inventaris'])->name('aset.inventaris');
-Route::get('/aset/Kategori', [Controllers\AsetController::class, 'Kategori'])->name('aset.Kategori');
+Route::get('/aset/kategori', [AsetController::class, 'kategori'])->name('aset.kategori');
 
 //HRD
 Route::get('/hrd/penggajian', [Controllers\HrdController::class, 'penggajian'])->name('hrd.penggajian');
 
-//Database program
+//Database list program
 Route::get('/program/{id}', [ProgramController::class, 'show'])->name('program.show');
 Route::get('/program/{id}/edit', [ProgramController::class, 'edit'])->name('program.edit');
 Route::resource('program', App\Http\Controllers\ProgramController::class);
 Route::post('/program/store', [ProgramController::class, 'store'])->name('program.store');
 Route::put('/program/{id}', [ProgramController::class, 'update'])->name('program.update');
+
+//Database penyaluran
+Route::resource('program/penyaluran', ProgPenyaluranController::class)->except(['create', 'store', 'update']);
+//Route::resource('program/penyaluran', ProgPenyaluranController::class);
+//Route::delete('/program/penyaluran/{id}', [ProgPenyaluranController::class, 'destroy'])->name('penyaluran.destroy');
+
 
 
 

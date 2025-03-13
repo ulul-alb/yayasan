@@ -15,18 +15,18 @@ class ProgramController extends Controller
     public function index()
     {
         $programs = Program::all(); // Ambil semua data dari tabel programs
-        return view('program.index', compact('programs')); // Kirim data ke view
+        return view('program.program.index', compact('programs')); // Kirim data ke view
     }
 
-    public function penyaluran()
-    {
-        return view('program.penyaluran');
-    }
+    // public function penyaluran()
+    // {
+    //     return view('program.penyaluran.index');
+    // }
 
-    public function info()
-    {
-        return view('program.info');
-    }
+    // public function info()
+    // {
+    //     return view('program.info');
+    // }
 
     /**
      * Profile
@@ -37,16 +37,18 @@ class ProgramController extends Controller
         return view('profile.index');
     }
 
-    public function show($id)
+    public function show($id, $type = 'program')
     {
         $program = Program::findOrFail($id);
-        return view('program.show', compact('program'));
+        
+        return view('program.program.show', ['program' => $program, 'type' => $type]);
     }
+
 
     public function edit($id)
     {
     $program = Program::findOrFail($id);
-    return view('program.edit', compact('program'));
+    return view('program.program.edit', compact('program'));
     }
 
 
