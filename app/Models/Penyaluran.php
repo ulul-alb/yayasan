@@ -10,7 +10,7 @@ class Penyaluran extends Model
 {
     use HasFactory;
 
-    protected $table = 'penyaluran'; // Sesuaikan dengan nama tabel di database
-    protected $fillable = ['nama', 'penerima', 'jumlah_dana', 'tanggal', 'start_date'];
+    protected $table = 'penyaluran'; 
+    protected $fillable = ['nama', 'kategori', 'jumlah', 'tanggal'];
 }
 

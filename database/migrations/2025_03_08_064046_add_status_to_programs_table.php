@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up()
     {
-    Schema::table('programs', function (Blueprint $table) {
-        $table->string('lokasi')->after('office')->nullable();
-    });
+        Schema::table('programs', function (Blueprint $table) {
+            $table->string('status')->nullable();
+        });
     }
 
     public function down()
     {
-    Schema::table('programs', function (Blueprint $table) {
-        $table->dropColumn('lokasi');
-    });
+        Schema::table('programs', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
     }
+
     
 };

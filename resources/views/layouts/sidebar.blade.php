@@ -96,7 +96,7 @@
                 </a>
                 <ul id="inventaris" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item"><a class='sidebar-link' href='{{ route('aset.inventaris') }}'>Inventaris</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('aset.Kategori') }}'>Kategori</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('aset.kategori') }}'>Kategori</a></li>
                 </ul>
             </li>
 

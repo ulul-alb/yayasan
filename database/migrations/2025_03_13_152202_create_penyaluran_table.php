@@ -11,18 +11,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('penyaluran', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->integer('jumlah');
-            $table->date('tanggal');
-            $table->timestamps();
-        });
+    Schema::create('penyaluran', function (Blueprint $table) {
+        $table->id();
+        $table->string('nama');
+        $table->string('kategori');
+        $table->integer('jumlah');
+        $table->date('tanggal');
+        $table->timestamps();
+    });
     }
-    
+
     public function down()
     {
         Schema::dropIfExists('penyaluran');
     }
+
+
     
 };
