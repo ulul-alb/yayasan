@@ -58,6 +58,8 @@ Route::put('/program/{id}', [ProgramController::class, 'update'])->name('program
 
 //Database penyaluran
 Route::resource('program/penyaluran', ProgPenyaluranController::class)->except(['create', 'store', 'update']);
+Route::get('/program/penyaluran/create', [PenyaluranController::class, 'create'])->name('penyaluran.create');
+Route::post('/program/store', [ProgramController::class, 'store'])->name('penyaluran.store');
 //Route::resource('program/penyaluran', ProgPenyaluranController::class);
 //Route::delete('/program/penyaluran/{id}', [ProgPenyaluranController::class, 'destroy'])->name('penyaluran.destroy');
 

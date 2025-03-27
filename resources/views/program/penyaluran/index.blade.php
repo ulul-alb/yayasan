@@ -21,7 +21,7 @@
 
         <div class="col-auto ms-auto text-end mt-n1">
             <a href="#" class="btn btn-light bg-white me-2">Export</a>
-            <a href="#" class="btn btn-primary">Tambah</a>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah</button>
         </div>
     </div>
     <div class="row">
@@ -82,8 +82,43 @@
     </div>
 @endsection
 
-
 @section('content_modal')
+
+<!-- Modal Tambah Data -->
+<div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTambahLabel">Tambah Data Penyaluran</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('penyaluran.store') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="nama_program" class="form-label">Nama Program</label>
+                        <input type="text" name="nama_program" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="penerima" class="form-label">Penerima</label>
+                        <input type="text" name="penerima" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="jumlah_dana" class="form-label">Jumlah Dana</label>
+                        <input type="number" name="jumlah_dana" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tanggal_penyaluran" class="form-label">Tanggal Penyaluran</label>
+                        <input type="date" name="tanggal_penyaluran" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Lihat Data -->
 <div class="modal fade" id="modalLihat" tabindex="-1" aria-labelledby="modalLihatLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
