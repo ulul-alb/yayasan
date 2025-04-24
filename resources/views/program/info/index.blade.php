@@ -5,7 +5,6 @@
     'sidebar_submenu' => 'Dashboard Admin'
 ])
 
-
 @section('css_plugins')
     <style type="text/css">
         
@@ -16,7 +15,7 @@
 @section('content')
     <div class="row mb-2 mb-xl-3">
         <div class="col-auto d-none d-sm-block">
-            <h3>List Penyaluran</h3>
+            <h3>Kabar Terbaru</h3>
         </div>
 
         <div class="col-auto ms-auto text-end mt-n1">
@@ -37,33 +36,39 @@
                         <thead>
                             <tr>
                                 <th>Nama program</th>
-                                <th>Penerima</th>
-                                <th>Jumlah dana</th>
-                                <th>Tanggal Penyaluran</th>
+                                <th>Tanggal</th>
+                                <th>Detail Proses</th>
+                                <th>Gambar</th>
                                 
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($penyaluran as $data)
+                            @foreach($info as $data)
                                 <tr>
                                     <td>{{ $data->nama_program }}</td>
-                                    <td>{{ $data->penerima }}</td>
-                                    <td>{{ $data->jumlah_dana }}</td>
-                                    <td>{{ $data->tanggal_penyaluran }}</td>
+                                    <td>{{ $data->tanggal }}</td>
+                                    <td>{{ $data->detail_proses }}</td>
+                                    <td>
+                                        @if($item->gambar)
+                                            <img src="{{ asset('storage/' . $item->gambar) }}" width="100" />
+                                        @else
+                                            Tidak ada gambar
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="#" class="btn btn-sm btn-info btnLihat"
                                         data-nama="{{ $data->nama_program }}"
-                                        data-penerima="{{ $data->penerima }}"
-                                        data-dana="{{ $data->jumlah_dana }}"
-                                        data-tanggal="{{ $data->tanggal_penyaluran }}"
+                                        data-tanggal="{{ $data->tanggal }}"
+                                        data-detail="{{ $data->detail_proses }}"
+                                        data-gambar="{{ $data->gambar }}"
                                         data-bs-toggle="modal" data-bs-target="#modalLihat">
                                             <i class="align-middle" data-feather="eye"></i>
                                         </a>
-                                        <a href="{{ route('penyaluran.edit', $data->id) }}" class="btn btn-sm btn-warning">
+                                        <a href="{{ route('info.edit', $data->id) }}" class="btn btn-sm btn-warning">
                                             <i class="align-middle" data-feather="edit-2"></i>
                                         </a>
-                                        <form action="{{ route('penyaluran.destroy', $data->id) }}" method="POST" style="display:inline;">
+                                        <form action="{{ route('info.destroy', $data->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus?')">
@@ -88,28 +93,29 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTambahLabel">Tambah Data Penyaluran</h5>
+                <h5 class="modal-title" id="modalTambahLabel">Tambah Data Kabar Terbaru</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('penyaluran.store') }}" method="POST">
+                <form action="{{ route('info.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="nama_program" class="form-label">Nama Program</label>
                         <input type="text" name="nama_program" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="penerima" class="form-label">Penerima</label>
-                        <input type="text" name="penerima" class="form-control" required>
+                        <label for="tanggal" class="form-label">Tanggal</label>
+                        <input type="date" name="tanggal" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="jumlah_dana" class="form-label">Jumlah Dana</label>
-                        <input type="number" name="jumlah_dana" class="form-control" required>
+                        <label for="detail_proses" class="form-label">Detail Proses</label>
+                        <input type="text" name="detail_proses" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="tanggal_penyaluran" class="form-label">Tanggal Penyaluran</label>
-                        <input type="date" name="tanggal_penyaluran" class="form-control" required>
+                        <label for="gambar" class="form-label">Gambar</label>
+                        <input type="file" name="gambar" class="form-control" required>
                     </div>
+                    
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>
@@ -122,50 +128,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalLihatLabel">Detail Penyaluran</h5>
+                <h5 class="modal-title" id="modalLihatLabel">Detail Kabar Terbaru</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p><strong>Nama Program:</strong> <span id="detailNama"></span></p>
-                <p><strong>Penerima:</strong> <span id="detailPenerima"></span></p>
-                <p><strong>Jumlah Dana:</strong> <span id="detailDana"></span></p>
-                <p><strong>Tanggal Penyaluran:</strong> <span id="detailTanggal"></span></p>
+                <p><strong>Tanggal:</strong> <span id="detailTanggal"></span></p>
+                <p><strong>Detail Proses:</strong> <span id="detailDetailProses"></span></p>
+                <p><strong>Tanggal Penyaluran:</strong> <span id="detailTanggalPenyaluran"></span></p>
 
             </div>
         </div>
     </div>
 </div>
 @endsection
-
-
-
-@section('js_plugins')
-    <script src="{{ asset('/js/datatables.js') }}"></script>
-@endsection
-
-
-@section('js_inline')
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Inisialisasi DataTable
-        $("#datatables-reponsive").DataTable({
-            responsive: true
-        });
-
-        // Event saat tombol "Lihat" diklik
-        $(".btnLihat").on("click", function() {
-            let nama = $(this).data("nama");
-            let penerima = $(this).data("penerima");
-            let dana = $(this).data("dana");
-            let tanggal = $(this).data("tanggal");
-
-            $("#detailNama").text(nama);
-            $("#detailPenerima").text(penerima);
-            $("#detailDana").text(dana);
-            $("#detailTanggal").text(tanggal);
-            $("#detailStartDate").text(start);
-        });
-    });
-</script>
-@endsection
-

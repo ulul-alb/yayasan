@@ -32,15 +32,20 @@ class ProgPenyaluranController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|string|max:255',
-            'jumlah' => 'required|numeric',
-            'tanggal' => 'required|date',
+            'nama_program' => 'required|string|max:255',
+            'penerima' => 'required|string|max:255',
+            'jumlah_dana' => 'required|numeric',
+            'tanggal_penyaluran' => 'required|date'
         ]);
-
-        Penyaluran::create($request->all());
-
+        Penyaluran::create($request->only([
+            'nama_program',
+            'penerima',
+            'jumlah_dana',
+            'tanggal_penyaluran'
+        ]));
         return redirect()->route('penyaluran.index')->with('success', 'Data berhasil ditambahkan');
     }
+
 
     // Menampilkan form edit
     public function edit($id)
@@ -53,9 +58,10 @@ class ProgPenyaluranController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required|string|max:255',
-            'jumlah' => 'required|numeric',
-            'tanggal' => 'required|date',
+            'nama_program' => 'required|string|max:255',
+            'penerima' => 'required|string|max:255',
+            'jumlah_dana' => 'required|numeric',
+            'tanggal_penyaluran' => 'required|date'
         ]);
 
         $penyaluran = Penyaluran::findOrFail($id);

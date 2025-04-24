@@ -11,6 +11,6 @@ class Penyaluran extends Model
     use HasFactory;
 
     protected $table = 'penyaluran'; 
-    protected $fillable = ['nama', 'kategori', 'jumlah', 'tanggal'];
+    protected $fillable = ['nama_program', 'penerima', 'jumlah_dana', 'tanggal_penyaluran'];
 }
 

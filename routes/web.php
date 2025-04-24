@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ProgPenyaluranController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\MdataController;
 use App\Http\Controllers\AsetController;
@@ -49,20 +50,24 @@ Route::get('/aset/kategori', [AsetController::class, 'kategori'])->name('aset.ka
 //HRD
 Route::get('/hrd/penggajian', [Controllers\HrdController::class, 'penggajian'])->name('hrd.penggajian');
 
-//Database list program
+//list program
 Route::get('/program/{id}', [ProgramController::class, 'show'])->name('program.show');
 Route::get('/program/{id}/edit', [ProgramController::class, 'edit'])->name('program.edit');
 Route::resource('program', App\Http\Controllers\ProgramController::class);
 Route::post('/program/store', [ProgramController::class, 'store'])->name('program.store');
 Route::put('/program/{id}', [ProgramController::class, 'update'])->name('program.update');
 
-//Database penyaluran
+//penyaluran
 Route::resource('program/penyaluran', ProgPenyaluranController::class)->except(['create', 'store', 'update']);
-Route::get('/program/penyaluran/create', [PenyaluranController::class, 'create'])->name('penyaluran.create');
-Route::post('/program/store', [ProgramController::class, 'store'])->name('penyaluran.store');
+Route::get('/program/penyaluran/create', [ProgPenyaluranController::class, 'create'])->name('penyaluran.create');
+Route::post('/program/penyaluran/store', [ProgPenyaluranController::class, 'store'])->name('penyaluran.store');
+Route::get('/program/penyaluran/{id}/edit', [ProgPenyaluranController::class, 'edit'])->name('penyaluran.edit');
+Route::put('/program/penyaluran/{id}', [ProgPenyaluranController::class, 'update'])->name('penyaluran.update');
 //Route::resource('program/penyaluran', ProgPenyaluranController::class);
 //Route::delete('/program/penyaluran/{id}', [ProgPenyaluranController::class, 'destroy'])->name('penyaluran.destroy');
 
+//Info Program
+Route::resource('program/info', App\Http\Controllers\InfoController::class);
 
 
 
