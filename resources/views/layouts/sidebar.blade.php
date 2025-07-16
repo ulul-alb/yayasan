@@ -38,10 +38,52 @@
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Program</span>
                 </a>
                 <ul id="program" class="sidebar-dropdown list-unstyled collapse show" data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('program.index') }}'>List</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('penyaluran.index') }}'>Penyaluran</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('info.index') }}'>Kabar Terbaru</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.program.index') }}'>List</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.penyaluran.index') }}'>Penyaluran</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.info.index') }}'>Kabar Terbaru</a></li>
                 </ul>
+            </li>
+
+            <li class="sidebar-item">
+                <a class='sidebar-link' href='tables-bootstrap.html'>
+                    <i class="fa-solid fa-building-columns"></i> 
+                    <span class="align-middle">Lembaga</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a class='sidebar-link' href='tables-bootstrap.html'>
+                    <i class="fa-solid fa-clipboard-user"></i> 
+                    <span class="align-middle">Staff</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a class='sidebar-link' href='tables-bootstrap.html'>
+                    <i class="fa-solid fa-hand-holding-dollar"></i> 
+                    <span class="align-middle">Donasi</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a class='sidebar-link' href='tables-bootstrap.html'>
+                    <i class="fas fa-handshake"></i> 
+                    <span class="align-middle">Donatur</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a class='sidebar-link' href='tables-bootstrap.html'>
+                    <i class="fas fa-users"></i> 
+                    <span class="align-middle">Relawan</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a class='sidebar-link' href='tables-bootstrap.html'>
+                    <i class="fas fa-user-cog"></i> 
+                    <span class="align-middle">Role</span>
+                </a>
             </li>
 
             <li class="sidebar-item">
@@ -59,22 +101,10 @@
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">Keuangan</span>
                 </a>
                 <ul id="keuangan" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('keuangan.transaksi') }}'>Transaksi</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Laporan</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('keuangan.kategori') }}'>Kategori</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('keuangan.skategori') }}'>Sub Kategori</a></li>
-                </ul>
-            </li>
-
-            <li class="sidebar-item">
-                <a data-bs-target="#hrd" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">HRD</span>
-                </a>
-                <ul id="hrd" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('hrd.penggajian') }}'>Penggajian</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Presensi</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Hari Libur</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='#'>Perizinan</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.keuanganTransaksi') }}'>Transaksi</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.keuanganKategori') }}'>Kategori</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.keuanganSumber') }}'>Sumber</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.keuanganAkun') }}'>akun</a></li>
                 </ul>
             </li>
 
@@ -92,54 +122,33 @@
 
             <li class="sidebar-item">
                 <a data-bs-target="#inventaris" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Aset Manajemen</span>
+                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Inventaris</span>
                 </a>
                 <ul id="inventaris" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('aset.inventaris') }}'>Inventaris</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('aset.kategori') }}'>Kategori</a></li>
-                </ul>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.inventaris') }}'>Item</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.inventaris.kategori') }}'>Kategori</a></li>
             </li>
 
             <li class="sidebar-item">
-                <a data-bs-target="#masterdata" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Master Data</span>
-                </a>
-                <ul id="masterdata" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('mdata.staff') }}'>Akun / Staff</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('mdata.donatur') }}'>Donatur</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('mdata.mitra') }}'>Mitra</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='{{ route('mdata.relawan') }}'>Relawan</a></li>
-                </ul>
-            </li>
-
-            <li class="sidebar-header">
-                Lainnya
-            </li>
-            <li class="sidebar-item">
                 <a class='sidebar-link' href='tables-bootstrap.html'>
-                    <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Pengaturan</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a class='sidebar-link' href='tables-bootstrap.html'>
-                    <i class="align-middle" data-feather="anchor"></i> <span class="align-middle">Kebijakan Privasi</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a class='sidebar-link' href='tables-bootstrap.html'>
-                    <i class="align-middle" data-feather="list"></i> <span class="align-middle">Tentang Kami</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a class='sidebar-link' href='tables-bootstrap.html'>
-                    <i class="align-middle" data-feather="help-circle"></i> <span class="align-middle">FAQ</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a class='sidebar-link' href='tables-bootstrap.html'>
-                    <i class="align-middle" data-feather="info"></i> <span class="align-middle">Bantuan</span>
+                    <i class="align-middle" data-feather="settings"></i> 
+                    <span class="align-middle">Pengaturan</span>
                 </a>
             </li>
         </ul>
+
+        <!-- Spacer antara Inventaris dan Logout -->
+        <div style="margin-top: 30px;"></div>
+
+        <!-- Tombol Logout -->
+        <form action="{{ route('member.logout') }}" method="POST" style="padding-left: 20px;">
+            @csrf
+            <button type="submit" style="border: none; background: none; color: white; display: flex; align-items: center;">
+                <i class="fas fa-sign-out-alt"></i>
+                <span style="margin-left: 10px;">Logout</span>
+            </button>
+        </form>
+
+        <li class="nav-header" style="margin-top: 30px;"></li>
     </div>
 </nav>

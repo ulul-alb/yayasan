@@ -5,110 +5,90 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Program;
+use App\Models\ProgramCategory;
 
 class ProgramController extends Controller
 {
     /**
-     * Dashbaord list
-     *
+     * Tampilkan daftar program di dashboard
      */
     public function index()
     {
-        $programs = Program::all(); // Ambil semua data dari tabel programs
-        return view('program.program.index', compact('programs')); // Kirim data ke view
+        $program = Program::with('kategori')->get(); // ✅ eager load relasi kategori
+        $kategori = ProgramCategory::all(); // ✅ semua kategori untuk dropdown atau lainnya
+        return view('program.program.index', compact('program', 'kategori'));
     }
-
-    // public function penyaluran()
-    // {
-    //     return view('program.penyaluran.index');
-    // }
-
-    // public function info()
-    // {
-    //     return view('program.info');
-    // }
 
     /**
-     * Profile
-     *
+     * Simpan program baru ke database
      */
-    public function profile()
+    public function store(Request $request)
     {
-        return view('profile.index');
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'short_desc' => 'nullable|string|max:255',
+            'about' => 'nullable|string',
+            'end_date' => 'nullable|date',
+            'kategori_program_id' => 'required|exists:program_category,id',
+        ]);
+
+
+        Program::create([
+            'title' => $request->title,
+            'short_desc' => $request->short_desc,
+            'about' => $request->about,
+            'end_date' => $request->end_date,
+            'kategori_program_id' => $request->kategori_program_id
+        ]);
+
+
+        return redirect()->route('program.index')->with('success', 'Program berhasil ditambahkan!');
     }
 
-    public function show($id, $type = 'program')
-    {
-        $program = Program::findOrFail($id);
-        
-        return view('program.program.show', ['program' => $program, 'type' => $type]);
-    }
-
-
+    /**
+     * Tampilkan form edit program
+     */
     public function edit($id)
     {
-    $program = Program::findOrFail($id);
-    return view('program.program.edit', compact('program'));
+        $program = Program::findOrFail($id);
+        $kategori = ProgramCategory::all(); // ✅ ambil kategori untuk dropdown
+        return view('program.program.edit', compact('program', 'kategori'));
     }
 
+    /**
+     * Update data program
+     */
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama_program'        => 'required|string|max:255',
+            'deskripsi'           => 'required|string|max:255',
+            'mulai_tanggal'       => 'required|date',
+            'status'              => 'required|string',
+            'kategori_program_id' => 'required|exists:program_category,id'
+        ]);
 
+        $program = Program::findOrFail($id);
+
+        $program->update([
+            'nama_program'        => $request->nama_program,
+            'deskripsi'           => $request->deskripsi,
+            'mulai_tanggal'       => $request->mulai_tanggal,
+            'status'              => $request->status,
+            'kategori_program_id' => $request->kategori_program_id
+        ]);
+
+        return redirect()->route('program.index')->with('success', 'Program berhasil diperbarui!');
+    }
+
+    /**
+     * Hapus data program
+     */
     public function destroy($id)
     {
         $program = Program::findOrFail($id);
         $program->delete();
 
-        return redirect()->route('program.index')->with('success', 'Program berhasil dihapus.');
+        return redirect()->route('program.index')->with('success', 'Program berhasil dihapus!');
     }
-
-    public function store(Request $request)
-    {
-
-    $request->validate([
-        'name'       => 'required|string|max:255',
-        'position'   => 'required|string|max:255',
-        'office'     => 'required|string|max:255',
-        'status'     => 'required|string',
-        'start_date' => 'required|date',
-    ]);
-
-    $program = new Program();
-    $program->name = $request->name;
-    $program->position = $request->position;
-    $program->office = $request->office;
-    $program->status = $request->status;
-    $program->start_date = $request->start_date;
-    $program->save();
-
-    return redirect()->route('program.index')->with('success', 'Program berhasil ditambahkan!');
-    }
-
-
-
-    public function update(Request $request, $id)
-    {
-    $request->validate([
-        'nama'       => 'required|string|max:255',
-        'position'   => 'required|string|max:255',
-        'office'     => 'required|string|max:255',
-        'status'     => 'required|string|max:255',
-        'start_date' => 'required|date',
-    ]);
-
-    $program = Program::findOrFail($id);
-
-    $program->update([
-        'name'       => $request->nama,
-        'position'   => $request->position,
-        'office'     => $request->office,
-        'status'     => $request->status,
-        'start_date' => $request->start_date,
-    ]);
-
-    return redirect()->route('program.index')->with('success', 'Program berhasil diperbarui!');
-    }
-
-    
-
-
-
 }

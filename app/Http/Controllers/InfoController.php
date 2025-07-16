@@ -10,8 +10,8 @@ class InfoController extends Controller
 {
     public function index()
     {
-        $info = Info::all();
-        return view('program.info.index', compact('info'));
+        $info_program = Info::all();
+        return view('program.info.index', compact('info_program'));
     }
 
     public function create()

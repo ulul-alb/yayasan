@@ -9,7 +9,7 @@ class Info extends Model
 {
     use HasFactory;
 
-    protected $table = 'info';
+    protected $table = 'info_program';
 
     protected $fillable = ['nama_program', 'tanggal', 'detail_proses', 'gambar'];
 }

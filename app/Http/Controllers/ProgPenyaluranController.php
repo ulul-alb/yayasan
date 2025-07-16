@@ -11,15 +11,15 @@ class ProgPenyaluranController extends Controller
     // Menampilkan semua data penyaluran
     public function index()
     {
-        $penyaluran = Penyaluran::all();
-        return view('program.penyaluran.index', compact('penyaluran'));
+        $program_spend = Penyaluran::all();
+        return view('program.penyaluran.index', compact('program_spend'));
     }
 
     // Menampilkan detail data penyaluran
     public function show($id)
     {
-        $penyaluran = Penyaluran::findOrFail($id);
-        return view('program.penyaluran.show', ['program' => $penyaluran, 'type' => 'penyaluran']);
+        $program_spend = Penyaluran::findOrFail($id);
+        return view('program.penyaluran.show', compact('program_spend'));
     }
 
     // Menampilkan form tambah data penyaluran

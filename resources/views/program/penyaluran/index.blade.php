@@ -45,7 +45,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($penyaluran as $data)
+                            @foreach($program_spend as $data)
                                 <tr>
                                     <td>{{ $data->nama_program }}</td>
                                     <td>{{ $data->penerima }}</td>
@@ -92,7 +92,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('penyaluran.store') }}" method="POST">
+                <form action="{{ route('member.penyaluran.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="nama_program" class="form-label">Nama Program</label>

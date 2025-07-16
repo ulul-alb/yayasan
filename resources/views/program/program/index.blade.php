@@ -5,13 +5,11 @@
     'sidebar_submenu' => 'Dashboard Admin'
 ])
 
-
 @section('css_plugins')
     <style type="text/css">
         
     </style>
 @endsection
-
 
 @section('content')
     <div class="row mb-2 mb-xl-3">
@@ -21,9 +19,10 @@
 
         <div class="col-auto ms-auto text-end mt-n1">
             <a href="#" class="btn btn-light bg-white me-2">Export</a>
-            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah</a>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah</button>
         </div>
     </div>
+    
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -35,33 +34,37 @@
                     <table id="datatables-reponsive" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Name Program</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Status</th>
-                                <th>Start date</th>
+                                <th>Judul</th>
+                                <th>Deskripsi</th>
+                                <th>Kategori</th>
+                                <th>Tanggal Berakhir</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($programs as $program)
+                            @foreach($program as $data)
                                 <tr>
-                                    <td>{{ $program->name }}</td>
-                                    <td>{{ $program->position }}</td>
-                                    <td>{{ $program->office }}</td>
-                                    <td>{{ $program->status }}</td>
-                                    <td>{{ $program->start_date }}</td>
+                                    <td>{{ $data->title }}</td>
+                                    <td>{{ $data->short_desc }}</td>
+                                    <td>{{ $data->kategoriProgram->nama ?? '-' }}</td>
+                                    <td>{{ $data->end_date }}</td>
                                     <td>
-                                        <a href="{{ route('program.show', $program->id) }}" class="btn btn-sm btn-info">
+                                        <a href="#" class="btn btn-sm btn-info btn-detail"
+                                            data-title="{{ $data->title }}"
+                                            data-short_desc="{{ $data->short_desc }}"
+                                            data-end_date="{{ $data->end_date }}"
+                                            data-kategori="{{ $data->kategoriProgram->nama }}"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#modalLihat">
                                             <i class="align-middle" data-feather="eye"></i>
                                         </a>
-                                        <a href="{{ route('program.edit', $program->id) }}" class="btn btn-sm btn-warning">
+                                        <a href="{{ route('program.edit', $data->id) }}" class="btn btn-sm btn-warning">
                                             <i class="align-middle" data-feather="edit-2"></i>
                                         </a>
-                                        <form action="{{ route('program.destroy', $program->id) }}" method="POST" class="d-inline">
+                                        <form action="{{ route('program.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                            <button type="submit" class="btn btn-sm btn-danger">
                                                 <i class="align-middle" data-feather="trash"></i>
                                             </button>
                                         </form>
@@ -74,8 +77,11 @@
             </div>
         </div>
     </div>
+@endsection
 
-    <!-- Modal Tambah Data -->
+@section('content_modal')
+
+<!-- Modal Tambah Data -->
 <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -83,32 +89,34 @@
                 <h5 class="modal-title" id="modalTambahLabel">Tambah Program</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
             <div class="modal-body">
-                <form id="formTambah" action="{{ route('program.store') }}" method="POST">
+                <form action="{{ route('member.program.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Nama Program</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <label for="title" class="form-label">Judul Program</label>
+                        <input type="text" name="title" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="position" class="form-label">Position</label>
-                        <input type="text" class="form-control" id="position" name="position" required>
+                        <label for="short_desc" class="form-label">Deskripsi Singkat</label>
+                        <input type="text" name="short_desc" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="office" class="form-label">Office</label>
-                        <input type="text" class="form-control" id="office" name="office" required>
+                        <label for="about" class="form-label">Tentang Program</label>
+                        <textarea name="about" class="form-control" rows="3" required></textarea>
                     </div>
                     <div class="mb-3">
-                    <label for="status">Status Program</label>
-                        <select name="status" id="status" class="form-control">
-                            <option value="aktif">Aktif</option>
-                            <option value="selesai">Selesai</option>
-                            <option value="ditunda">Ditunda</option>
+                        <label for="end_date" class="form-label">Tanggal Berakhir</label>
+                        <input type="date" name="end_date" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="kategori_program_id" class="form-label">Kategori Program</label>
+                        <select name="kategori_program_id" class="form-control" required>
+                            <option value="">-- Pilih Kategori --</option>
+                            @foreach($kategori as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                            @endforeach
                         </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="start_date" class="form-label">Start Date</label>
-                        <input type="date" class="form-control" id="start_date" name="start_date" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
@@ -117,43 +125,42 @@
     </div>
 </div>
 
+<!-- Modal Lihat Data -->
+<div class="modal fade" id="modalLihat" tabindex="-1" aria-labelledby="modalLihatLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLihatLabel">Detail Program</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Judul:</strong> <span id="detailNamaProgram"></span></p>
+                <p><strong>Deskripsi Singkat:</strong> <span id="detailDeskripsi"></span></p>
+                <p><strong>Kategori:</strong> <span id="detailKategori"></span></p>
+                <p><strong>Tanggal Berakhir:</strong> <span id="detailTanggal"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        $("#datatables-responsive").DataTable({
-            responsive: true
-        });
-    });
-</script>
-
-@section('content_modal')
-
-@endsection
-
 
 @section('js_plugins')
-    <!-- Pastikan jQuery hanya dipanggil sekali -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('/js/datatables.js') }}"></script>
 @endsection
-
 
 @section('js_inline')
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        if ($.fn.DataTable.isDataTable("#datatables-responsive")) {
-            $("#datatables-responsive").DataTable().destroy(); // Hancurkan instance sebelumnya
-        }
+        $("#datatables-reponsive").DataTable({
+            responsive: true
+        });
 
-        $("#datatables-responsive").DataTable({
-            responsive: true,
-            autoWidth: false
+        $('.btn-detail').on('click', function () {
+            $("#detailNamaProgram").text($(this).data("title"));
+            $("#detailDeskripsi").text($(this).data("short_desc"));
+            $("#detailTanggal").text($(this).data("end_date"));
+            $("#detailKategori").text($(this).data("kategori"));
         });
     });
 </script>
 @endsection
-
-
-

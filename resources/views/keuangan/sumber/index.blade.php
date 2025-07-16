@@ -16,7 +16,7 @@
 @section('content')
     <div class="row mb-2 mb-xl-3">
         <div class="col-auto d-none d-sm-block">
-            <h3>List Akun/Staff</h3>
+            <h3>List Keuangan Sumber</h3>
         </div>
 
         <div class="col-auto ms-auto text-end mt-n1">
