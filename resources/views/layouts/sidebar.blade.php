@@ -34,10 +34,10 @@
             </li>
 
             <li class="sidebar-item">
-                <a data-bs-target="#program" data-bs-toggle="collapse" class="sidebar-link">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Program</span>
+                <a data-bs-target="#program" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle"></i> <span class="align-middle">Program</span>
                 </a>
-                <ul id="program" class="sidebar-dropdown list-unstyled collapse show" data-bs-parent="#sidebar">
+                <ul id="program" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.program.index') }}'>List</a></li>
                     <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.penyaluran.index') }}'>Penyaluran</a></li>
                     <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.info.index') }}'>Kabar Terbaru</a></li>
@@ -87,10 +87,10 @@
             </li>
 
             <li class="sidebar-item">
-                <a data-bs-target="#donasi" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Penghimpunan</span>
+                <a data-bs-target="#penghimpunan" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle" data-feather="penghimpunan"></i> <span class="align-middle">Penghimpunan</span>
                 </a>
-                <ul id="donasi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <ul id="penghimpunan" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item"><a class='sidebar-link' href='#'>Transaksi</a></li>
                     <li class="sidebar-item"><a class='sidebar-link' href='#'>Kategori</a></li>
                 </ul>
@@ -98,7 +98,7 @@
 
             <li class="sidebar-item">
                 <a data-bs-target="#keuangan" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Keuangan</span>
+                    <i class="align-middle" data-feather="keuangan"></i> <span class="align-middle">Keuangan</span>
                 </a>
                 <ul id="keuangan" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.keuanganTransaksi') }}'>Transaksi</a></li>
@@ -110,7 +110,7 @@
 
             <li class="sidebar-item">
                 <a data-bs-target="#marketing" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Marketing</span>
+                    <i class="align-middle" data-feather="marketing"></i> <span class="align-middle">Marketing</span>
                 </a>
                 <ul id="marketing" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item"><a class='sidebar-link' href='#'>Auto WA</a></li>
@@ -122,7 +122,7 @@
 
             <li class="sidebar-item">
                 <a data-bs-target="#inventaris" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Inventaris</span>
+                    <i class="align-middle" data-feather="inventaris"></i> <span class="align-middle">Inventaris</span>
                 </a>
                 <ul id="inventaris" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item"><a class='sidebar-link' href='{{ route('member.inventaris') }}'>Item</a></li>

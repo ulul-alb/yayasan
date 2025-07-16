@@ -27,6 +27,6 @@
         </tr>
     </table>
 
-    <a href="{{ route('program.index') }}" class="btn btn-secondary">Kembali</a>
+    <a href="{{ route('member.program.index') }}" class="btn btn-secondary">Kembali</a>
 </div>
 @endsection

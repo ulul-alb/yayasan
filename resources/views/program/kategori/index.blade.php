@@ -14,12 +14,12 @@
 @section('content')
     <div class="row mb-2 mb-xl-3">
         <div class="col-auto d-none d-sm-block">
-            <h3>List Program</h3>
+            <h3>Pogram Kategori</h3>
         </div>
 
         <div class="col-auto ms-auto text-end mt-n1">
             <a href="#" class="btn btn-light bg-white me-2">Export</a>
-            <a href="{{ route('member.program.create') }}" class="btn btn-primary">Tambah</a>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah</button>
         </div>
     </div>
     
@@ -82,7 +82,7 @@
 @section('content_modal')
 
 <!-- Modal Tambah Data -->
-<!-- <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
+<div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -123,10 +123,10 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 <!-- Modal Lihat Data -->
-<!-- <div class="modal fade" id="modalLihat" tabindex="-1" aria-labelledby="modalLihatLabel" aria-hidden="true">
+<div class="modal fade" id="modalLihat" tabindex="-1" aria-labelledby="modalLihatLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -141,7 +141,7 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
 @endsection
 
 @section('js_plugins')

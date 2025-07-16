@@ -55,6 +55,13 @@ class ProgramController extends Controller
         return view('program.program.edit', compact('program', 'kategori'));
     }
 
+    public function show($id)
+    {
+        $program = Program::findOrFail($id);
+        return view('member.program.show', compact('program'));
+    }
+
+
     /**
      * Update data program
      */

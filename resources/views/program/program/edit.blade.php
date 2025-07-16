@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h2>Edit Program</h2>
-        <form action="{{ route('program.update', $program->id) }}" method="POST">
+        <form action="{{ route('member.rogram.update', $program->id) }}" method="POST">
             @csrf
             @method('PUT')
 
