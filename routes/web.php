@@ -27,13 +27,6 @@ use App\Http\Controllers\HrdController;
 Route::get('/', [AuthController::class, 'showLogin'])->name('login');
 
 
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/dashbord', function () {
-//         return 'Selamat datang di dashboard';
-//     });
-// });
-
 Route::group([
     'as'        => 'member.',   // untuk route(member.xx)
     'prefix'    => 'member'     //untuk uri
@@ -71,14 +64,17 @@ Route::group([
         Route::get('/aset/kategori', [AsetController::class, 'kategori'])->name('inventaris.kategori');
 
         //list program
-        Route::get('/program/{id}', [ProgramController::class, 'show'])->name('program.show');
-        Route::get('/program/{id}/edit', [ProgramController::class, 'edit'])->name('program.edit');
+        // Route::get('/program/{id}', [ProgramController::class, 'show'])->name('program.show');
+        // Route::get('/program/{id}/edit', [ProgramController::class, 'edit'])->name('program.edit');
+        // Route::post('/program/store', [ProgramController::class, 'store'])->name('program.store');
+        // Route::put('/program/{id}', [ProgramController::class, 'update'])->name('program.update');
+        Route::get('/program/datatables', [ProgramController::class, 'datatablesProgram'])->name('program.datatables');
         Route::resource('program', App\Http\Controllers\ProgramController::class);
-        Route::post('/program/store', [ProgramController::class, 'store'])->name('program.store');
-        Route::put('/program/{id}', [ProgramController::class, 'update'])->name('program.update');
+
+        // Kategori Program
         Route::resource('kategori', ProgramCategoryController::class);
 
-        //penyaluran
+        // Penyaluran Program
         Route::resource('program/penyaluran', ProgPenyaluranController::class)->except(['create', 'store', 'update']);
         Route::get('/program/penyaluran/create', [ProgPenyaluranController::class, 'create'])->name('penyaluran.create');
         Route::post('/program/penyaluran/store', [ProgPenyaluranController::class, 'store'])->name('penyaluran.store');

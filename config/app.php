@@ -159,6 +159,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        // Yajra\DataTables\ButtonsServiceProvider::class, // hanya jika pakai fitur export/buttons
 
         /*
          * Application Service Providers...
